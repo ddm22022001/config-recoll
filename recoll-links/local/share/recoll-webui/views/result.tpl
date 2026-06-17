@@ -33,7 +33,10 @@
         <div class="search-result-author">{{d['author']}}</div>
     %end
     <div class="search-result-url">
-        %urllabel = d['url'].replace('file://', '')
+        %urllabel = d['url'].replace('file://', '', 1)
+        %for dr, prefix in config['mounts'].items():
+            %url = url.replace(dr, prefix)
+        %end
         %if config['shortenpaths']:
             %if len(config['commonprefix']) > 0 and len(urllabel) > len(config['commonprefix']):
                 %urllabel = urllabel.replace(config['commonprefix'], "")
