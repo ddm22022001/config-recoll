@@ -47,7 +47,7 @@
     </div>
     %if not "noresultlinks" in config or not config["noresultlinks"]:
     <div class="search-result-links">
-        <a href="{{url}}">Open</a>
+        <a href="{{url}}">Open-Document</a>
         <a href="download/{{number-1}}?{{query_string}}">Download</a>
         <a href="preview/{{number-1}}?{{query_string}}" target="_blank">Preview</a>
         %if config["permlinks"] and config["res_permlink"]:
