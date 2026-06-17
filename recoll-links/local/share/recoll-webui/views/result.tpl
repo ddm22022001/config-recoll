@@ -8,7 +8,7 @@
         %end
     %end
     <div class="search-result-number"><a href="#r{{d['sha']}}">#{{number}}</a></div>
-    %url = d['url'].replace('file://', '')
+    %url = d['url'].replace('file://', '', 1)
     %for dr, prefix in config['mounts'].items():
         %url = url.replace(dr, prefix)
     %end
@@ -35,7 +35,7 @@
     <div class="search-result-url">
         %urllabel = d['url'].replace('file://', '', 1)
         %for dr, prefix in config['mounts'].items():
-            %url = url.replace(dr, prefix)
+            %urllabel = urllabel.replace(dr, prefix)
         %end
         %if config['shortenpaths']:
             %if len(config['commonprefix']) > 0 and len(urllabel) > len(config['commonprefix']):
