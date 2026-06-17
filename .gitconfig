@@ -1,0 +1,58 @@
+[user]
+	email = ddm22022001@gmail.com
+	name = ddm22022001
+[core]
+	editor = vim
+	pager = delta
+[include]
+     path = /home/abi/github/delta/themes.gitconfig
+[interactive]
+        diffFilter = delta --color-only
+[pull]
+	rebase = false
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[alias]
+	aa = add --all
+	aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort
+	amend = commit --amend
+	anw = !sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
+	ca = diff --cached
+	co = checkout
+	cp = cherry-pick
+	df = diff
+	fall = log --all --grep
+	find = log --grep
+	fmt = clang-format
+	git = "!exec git"
+	graph = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
+	lg = log --oneline
+        lgf = log --oneline --decorate --format='%h %d %s %cd' --date=short -5
+	lgf = log --oneline --decorate --format='%C(yellow)%h%C(reset) %C(green)%cd%C(reset) %C(white)%s%C(reset) %C(red)%d%C(reset)' --date=short -5
+        logd = log --decorate
+	nopush = !sh -c 'git remote set-url --push $1 /dev/null' -
+	ours = checkout --ours
+	patch =  show HEAD -U999999
+        p = push
+	review = !git diff --name-only --cached | xargs -n 1 git blame --porcelain | grep  \"^author \" | sort | uniq -c | sort -nr | head -10
+	sha = rev-parse HEAD
+	st = status
+	theirs = checkout --theirs
+	uncommit = reset HEAD~
+	unstage = reset HEAD --
+
+[delta]
+	features = calochortus-lyallii
+	line-numbers = true
+	side-by-side = true
+	#syntax-theme = "GitHub"
+	navigate = true
+[credential "https://github.com"]
+	helper =
+[color]
+	ui = auto
