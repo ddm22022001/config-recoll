@@ -8,7 +8,7 @@
         %end
     %end
     <div class="search-result-number"><a href="#r{{d['sha']}}">#{{number}}</a></div>
-    %url = d['url'].replace('file://', '', 1)
+    %url = d['url'].replace('file://', '')
     %for dr, prefix in config['mounts'].items():
         %url = url.replace(dr, prefix)
     %end
@@ -33,11 +33,7 @@
         <div class="search-result-author">{{d['author']}}</div>
     %end
     <div class="search-result-url">
-        %urllabel = d['url']
-        %for dr, prefix in config['mounts'].items():
-            %urllabel = urllabel.replace(dr, prefix)
-        %end
-        %urllabel = urllabel.replace('file://', '', 1)
+        %urllabel = d['url'].replace('file://', '')
         %if config['shortenpaths']:
             %if len(config['commonprefix']) > 0 and len(urllabel) > len(config['commonprefix']):
                 %urllabel = urllabel.replace(config['commonprefix'], "")
@@ -51,7 +47,7 @@
     </div>
     %if not "noresultlinks" in config or not config["noresultlinks"]:
     <div class="search-result-links">
-        <a href="{{url}}">Open-Document</a>
+        <a href="{{url}}">Open</a>
         <a href="download/{{number-1}}?{{query_string}}">Download</a>
         <a href="preview/{{number-1}}?{{query_string}}" target="_blank">Preview</a>
         %if config["permlinks"] and config["res_permlink"]:
